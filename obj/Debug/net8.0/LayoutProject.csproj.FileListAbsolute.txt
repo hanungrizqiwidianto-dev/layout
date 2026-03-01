@@ -31,3 +31,4 @@ D:\layout\obj\Debug\net8.0\refint\LayoutProject.dll
 D:\layout\obj\Debug\net8.0\LayoutProject.pdb
 D:\layout\obj\Debug\net8.0\LayoutProject.genruntimeconfig.cache
 D:\layout\obj\Debug\net8.0\ref\LayoutProject.dll
+D:\layout\obj\Debug\net8.0\LayoutProject.sourcelink.json
