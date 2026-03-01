@@ -1,0 +1,225 @@
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+    <title>@ViewData["Title"] - LayoutProject</title>
+
+    <meta name="description" content="Login - Layout Project">
+    <meta name="author" content="LayoutProject">
+    <meta name="robots" content="noindex, nofollow">
+
+    <!-- Icons -->
+    <link rel="shortcut icon" href="~/assets/media/favicons/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/assets/media/favicons/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/media/favicons/apple-touch-icon-180x180.png">
+    <!-- END Icons -->
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" id="css-main" href="~/assets/css/codebase.min.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .eris-login-container {
+            position: relative;
+            height: 100vh;
+            background-image: url('~/assets/media/photos/eris-bg.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .eris-login-card {
+            background: linear-gradient(135deg, #c4d57f 0%, #d4e499 100%);
+            border-radius: 40px;
+            padding: 50px 60px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 550px;
+            width: 90%;
+            position: relative;
+        }
+
+        .eris-login-card::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 8px;
+            background: white;
+            border-radius: 10px;
+        }
+
+        .eris-title {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .eris-title-main {
+            font-size: 32px;
+            font-weight: 300;
+            color: #4a5c2a;
+            letter-spacing: 2px;
+            margin-bottom: 0;
+        }
+
+        .eris-title-logo {
+            font-size: 72px;
+            font-weight: 900;
+            color: #2d8659;
+            letter-spacing: 8px;
+            margin: 5px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .eris-subtitle {
+            text-align: center;
+            font-size: 14px;
+            color: #4a5c2a;
+            margin-bottom: 30px;
+            font-weight: 500;
+        }
+
+        .eris-form-group {
+            margin-bottom: 20px;
+        }
+
+        .eris-label {
+            background: #e8edc4;
+            padding: 12px 20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: 600;
+            color: #4a5c2a;
+            font-size: 15px;
+            margin-bottom: 0;
+            display: block;
+        }
+
+        .eris-input {
+            width: 100%;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 0 0 8px 8px;
+            font-size: 16px;
+            background: #fffef5;
+            color: #333;
+            outline: none;
+            box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .eris-input:focus {
+            box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .eris-login-btn-container {
+            background: linear-gradient(180deg, #e6b94d 0%, #d4a23a 100%);
+            border-radius: 15px;
+            padding: 3px;
+            margin-top: 30px;
+        }
+
+        .eris-login-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(180deg, #f5d36f 0%, #e6b94d 100%);
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 700;
+            color: #4a5c2a;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .eris-login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .eris-login-btn:active {
+            transform: translateY(0);
+        }
+
+        @@media (max-width: 768px) {
+            .eris-login-card {
+                padding: 40px 30px;
+                border-radius: 30px;
+            }
+
+            .eris-title-logo {
+                font-size: 56px;
+            }
+        }
+    </style>
+    <!-- END Stylesheets -->
+</head>
+
+<body>
+    <div class="eris-login-container">
+        <div class="eris-login-card">
+            <!-- Header -->
+            <div class="eris-title">
+                <div class="eris-title-main">Employee Registration Information System</div>
+                <div class="eris-title-logo">ERIS</div>
+            </div>
+            <div class="eris-subtitle">Sign in to access the application</div>
+            <!-- END Header -->
+
+            <!-- Sign In Form -->
+            <form asp-action="Login" method="POST">
+                <div class="eris-form-group">
+                    <label class="eris-label">Username</label>
+                    <input type="text" class="eris-input" id="email" name="email" required>
+                </div>
+                <div class="eris-form-group">
+                    <label class="eris-label">Password</label>
+                    <input type="password" class="eris-input" id="password" name="password" required>
+                </div>
+                <div class="eris-login-btn-container">
+                    <button type="submit" class="eris-login-btn">Login</button>
+                </div>
+            </form>
+            <!-- END Sign In Form -->
+        </div>
+    </div>
+
+    <!-- Codebase Core JS -->
+    <script src="~/assets/js/codebase.app.min.js"></script>
+
+    <!-- jQuery Validation Plugin -->
+    <script src="~/assets/js/lib/jquery.min.js"></script>
+    <script src="~/assets/js/plugins/jquery-validation/jquery.validate.min.js"></script>
+
+    <!-- Page JS Plugins -->
+    <script src="~/assets/js/plugins/jquery-validation/additional-methods.js"></script>
+
+    <!-- Page JS Code -->
+    <script>
+        // Initialize form validation
+        jQuery(function () {
+            Codebase.helpers(['jq-validation']);
+        });
+    </script>
+</body>
+
+</html>
