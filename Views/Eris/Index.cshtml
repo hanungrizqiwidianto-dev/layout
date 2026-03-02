@@ -1,285 +1,450 @@
 @{
     ViewData["Title"] = "ERIS - Employee Registration Information System";
+    Layout = null;
 }
 
-<style>
-    .eris-hero {
-        background: linear-gradient(135deg, #e8f4f8 0%, #d5e5ea 100%);
-        padding: 50px 0;
-        border-radius: 0;
-        margin: -2rem -2rem 2rem -2rem;
-    }
+<!doctype html>
+<html lang="en">
 
-    .eris-hero-content {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 60px;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 20px;
-    }
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>@ViewData["Title"]</title>
 
-    .eris-illustration {
-        max-width: 350px;
-        flex-shrink: 0;
-    }
+    <!-- Icons -->
+    <link rel="shortcut icon" href="~/assets/media/favicons/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="~/assets/media/favicons/favicon-192x192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/media/favicons/apple-touch-icon-180x180.png">
+    <!-- END Icons -->
 
-    .eris-text {
-        text-align: left;
-    }
+    <!-- Stylesheets -->
+    <link rel="stylesheet" id="css-main" href="~/assets/css/codebase.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
-    .eris-title {
-        font-size: 6rem;
-        font-weight: 900;
-        color: #6B4423;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin-bottom: 15px;
-        line-height: 1;
-        letter-spacing: -2px;
-    }
 
-    .eris-subtitle {
-        font-size: 2rem;
-        color: #7B5835;
-        font-weight: 600;
-        line-height: 1.3;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    @@media (max-width: 768px) {
+        body {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+
+        .top-header {
+            background: white;
+            padding: 20px 40px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            border-bottom: 3px solid #2d8659;
+        }
+
+        .top-header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .company-name-header {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2d8659;
+            letter-spacing: 0.5px;
+        }
+
+        .company-logo-header {
+            height: 60px;
+            width: auto;
+        }
+
+        @@media (max-width: 768px) {
+            .top-header {
+                padding: 15px 20px;
+            }
+
+            .company-name-header {
+                font-size: 1.2rem;
+            }
+
+            .company-logo-header {
+                height: 45px;
+            }
+        }
+
+        .eris-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .eris-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 0px;
+            margin-bottom: 60px;
+            padding: 40px 20px;
+            background: transparent;
+            border-radius: 20px;
+        }
+
+        .eris-header-text {
+            flex: 1;
+            text-align: left;
+        }
+
+        .eris-header-image {
+            flex-shrink: 0;
+            max-width: 450px;
+        }
+
+        .eris-header-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .eris-logo {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #2d8659;
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+            -webkit-text-stroke: 2px #2d8659;
+            text-stroke: 2px #2d8659;
+            paint-order: stroke fill;
+        }
+
+        .eris-title-text {
+            font-size: 2rem;
+            color: #4a5c2a;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .eris-subtitle-text {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+        @@media (max-width: 768px) {
+            .eris-header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .eris-header-text {
+                text-align: center;
+            }
+
+            .eris-logo {
+                font-size: 3.5rem;
+            }
+
+            .eris-title-text {
+                font-size: 1.5rem;
+            }
+
+            .eris-header-image {
+                max-width: 300px;
+            }
+        }
+
+        .eris-hero {
+            background: linear-gradient(135deg, #e8f4f8 0%, #d5e5ea 100%);
+            padding: 50px 0;
+            border-radius: 0;
+            margin: -2rem -2rem 2rem -2rem;
+        }
+
         .eris-hero-content {
-            flex-direction: column;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .eris-illustration {
+            max-width: 350px;
+            flex-shrink: 0;
         }
 
         .eris-text {
-            text-align: center;
+            text-align: left;
         }
 
         .eris-title {
-            font-size: 3.5rem;
+            font-size: 6rem;
+            font-weight: 900;
+            color: #6B4423;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin-bottom: 15px;
+            line-height: 1;
+            letter-spacing: -2px;
         }
 
         .eris-subtitle {
-            font-size: 1.4rem;
+            font-size: 2rem;
+            color: #7B5835;
+            font-weight: 600;
+            line-height: 1.3;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
         }
-        
-        .eris-illustration {
-            max-width: 250px;
+
+        @@media (max-width: 768px) {
+            .eris-hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .eris-text {
+                text-align: center;
+            }
+
+            .eris-title {
+                font-size: 3.5rem;
+            }
+
+            .eris-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .eris-illustration {
+                max-width: 250px;
+            }
         }
-    }
 
-    .feature-card {
-        border-radius: 30px;
-        padding: 40px 30px;
-        text-align: center;
-        height: 480px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
+        .feature-card {
+            border-radius: 30px;
+            padding: 40px 30px;
+            text-align: center;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-    }
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
 
-    .feature-card-pink {
-        background: linear-gradient(135deg, #E8B4B8 0%, #D4A5A5 100%);
-    }
+        .feature-card-pink {
+            background: linear-gradient(135deg, #E8B4B8 0%, #D4A5A5 100%);
+        }
 
-    .feature-card-green {
-        background: linear-gradient(135deg, #C8DC7C 0%, #B8CC6C 100%);
-    }
+        .feature-card-green {
+            background: linear-gradient(135deg, #C8DC7C 0%, #B8CC6C 100%);
+        }
 
-    .feature-card-orange {
-        background: linear-gradient(135deg, #F5C77E 0%, #E5B76E 100%);
-    }
+        .feature-card-orange {
+            background: linear-gradient(135deg, #F5C77E 0%, #E5B76E 100%);
+        }
 
-    .feature-icon {
-        width: 120px;
-        height: 120px;
-        margin: 0 auto 25px;
-        background: rgba(0, 0, 0, 0.15);
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        .feature-icon {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 25px;
+            background: rgba(0, 0, 0, 0.15);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .feature-icon i {
-        font-size: 3.5rem;
-        color: #333;
-    }
+        .feature-icon i {
+            font-size: 3.5rem;
+            color: #333;
+        }
 
-    .feature-title {
-        font-size: 1.25rem;
-        font-weight: bold;
-        color: #1a1a1a;
-        margin-bottom: 15px;
-        text-transform: uppercase;
-        min-height: 60px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
 
-    .feature-description {
-        font-size: 1rem;
-        color: #2a2a2a;
-        margin-bottom: 25px;
-        line-height: 1.6;
-        flex-grow: 1;
-    }
+        .feature-description {
+            font-size: 1rem;
+            color: #2a2a2a;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            flex-grow: 1;
+        }
 
-    .feature-card-content {
-        flex-grow: 1;
-        display: flex;
-        flex-direction: column;
-    }
+        .feature-card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .feature-card-footer {
-        margin-top: auto;
-    }
+        .feature-card-footer {
+            margin-top: auto;
+        }
 
-    .feature-btn {
-        background: #5A9FD4;
-        color: white;
-        border: none;
-        border-radius: 25px;
-        padding: 12px 40px;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-    }
+        .feature-btn {
+            background: #5A9FD4;
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 40px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .feature-btn:hover {
-        background: #4A8FC4;
-        color: white;
-        transform: scale(1.05);
-    }
+        .feature-btn:hover {
+            background: #4A8FC4;
+            color: white;
+            transform: scale(1.05);
+        }
 
-    .feature-btn::after {
-        content: '→';
-        margin-left: 10px;
-        font-weight: bold;
-    }
+        .feature-btn::after {
+            content: '→';
+            margin-left: 10px;
+            font-weight: bold;
+        }
 
-    .wave-decoration {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        height: 100px;
-    }
+        .wave-decoration {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+        }
 
-    .company-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 0;
-        margin-bottom: 20px;
-        border-bottom: 3px solid #2d6935;
-    }
+        .company-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #2d6935;
+        }
 
-    .company-name {
-        font-size: 1.1rem;
-        font-weight: bold;
-        color: #2d6935;
-    }
+        .company-name {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #2d6935;
+        }
 
-    .company-year {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: #2d6935;
-    }
+        .company-year {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2d6935;
+        }
 
-    .kpp-logo {
-        width: 150px;
-    }
-</style>
+        .kpp-logo {
+            width: 150px;
+        }
+    </style>
+</head>
 
-<!-- Hero Section -->
-<div class="eris-hero">
-    <div class="eris-hero-content">
-        <!-- Illustration -->
-        <div>
-            <img src="~/Design/10.png" alt="Workers Illustration" class="eris-illustration">
-        </div>
-
-        <!-- Title -->
-        <div class="eris-text">
-            <h1 class="eris-title">ERIS</h1>
-            <p class="eris-subtitle">Employee Registration Information System</p>
+<body>
+    <!-- Top Header with Company Name and Logo -->
+    <div class="top-header">
+        <div class="top-header-content">
+            <div class="company-name-header">PT Kalimantan Prima Persada</div>
+            <div>
+                <img src="~/Design/Master File New Logo KPP Mining_Green.png" alt="KPP Mining Logo"
+                    class="company-logo-header">
+            </div>
         </div>
     </div>
-</div>
 
-<!-- Feature Cards -->
-<div class="row g-4 mb-5">
-    <!-- Card 1: Registrasi Data Personal -->
-    <div class="col-lg-4 col-md-6">
-        <div class="feature-card feature-card-pink">
-            <div class="feature-card-content">
-                <div class="feature-icon">
-                    <i class="fa fa-user-check"></i>
+    <div class="eris-container">
+        <!-- Header Section -->
+        <div class="eris-header">
+            <div class="eris-header-image">
+                <img src="~/Design/workers_no_bg.png" alt="Workers Illustration">
+            </div>
+            <div class="eris-header-text">
+                <div class="eris-logo">ERIS</div>
+                <div class="eris-title-text">Employee Registration Information System</div>
+            </div>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="row g-4 mb-5">
+            <!-- Card 1: Registrasi Data Personal -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card feature-card-pink">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <i class="fa fa-user-check"></i>
+                        </div>
+                        <h3 class="feature-title">Registrasi Data Personal<br>Pekerja Baru</h3>
+                        <p class="feature-description">
+                            Isi dan lengkapi data diri Anda secara lengkap dan akurat untuk mendukung proses
+                            administrasi dan
+                            kepegawaian.
+                        </p>
+                    </div>
+                    <div class="feature-card-footer">
+                        <a href="javascript:void(0)" class="btn feature-btn">Mulai Registrasi Sekarang</a>
+                    </div>
                 </div>
-                <h3 class="feature-title">Registrasi Data Personal<br>Pekerja Baru</h3>
-                <p class="feature-description">
-                    Isi dan lengkapi data diri Anda secara lengkap dan akurat untuk mendukung proses administrasi dan
-                    kepegawaian.
-                </p>
             </div>
-            <div class="feature-card-footer">
-                <a href="javascript:void(0)" class="btn feature-btn">Mulai Registrasi Sekarang</a>
-            </div>
-        </div>
-    </div>
 
-    <!-- Card 2: Signing Kontrak Kerja -->
-    <div class="col-lg-4 col-md-6">
-        <div class="feature-card feature-card-green">
-            <div class="feature-card-content">
-                <div class="feature-icon">
-                    <i class="fa fa-handshake"></i>
+            <!-- Card 2: Signing Kontrak Kerja -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card feature-card-green">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <i class="fa fa-handshake"></i>
+                        </div>
+                        <h3 class="feature-title">Signing Kontrak Kerja</h3>
+                        <p class="feature-description">
+                            Draft dan signing kontrak kerja
+                        </p>
+                    </div>
+                    <div class="feature-card-footer">
+                        <a href="javascript:void(0)" class="btn feature-btn">Lihat Kontrak Kerja</a>
+                    </div>
                 </div>
-                <h3 class="feature-title">Signing Kontrak Kerja</h3>
-                <p class="feature-description">
-                    Draft dan signing kontrak kerja
-                </p>
             </div>
-            <div class="feature-card-footer">
-                <a href="javascript:void(0)" class="btn feature-btn">Lihat Kontrak Kerja</a>
-            </div>
-        </div>
-    </div>
 
-    <!-- Card 3: Report Data Personal -->
-    <div class="col-lg-4 col-md-6">
-        <div class="feature-card feature-card-orange">
-            <div class="feature-card-content">
-                <div class="feature-icon">
-                    <i class="fa fa-file-alt"></i>
+            <!-- Card 3: Report Data Personal -->
+            <div class="col-lg-4 col-md-6">
+                <div class="feature-card feature-card-orange">
+                    <div class="feature-card-content">
+                        <div class="feature-icon">
+                            <i class="fa fa-file-alt"></i>
+                        </div>
+                        <h3 class="feature-title">Report<br>Data Personal Pekerja Baru</h3>
+                        <p class="feature-description">
+                            Report data personal
+                        </p>
+                    </div>
+                    <div class="feature-card-footer">
+                        <a href="javascript:void(0)" class="btn feature-btn">Lihat Laporan</a>
+                    </div>
                 </div>
-                <h3 class="feature-title">Report<br>Data Personal Pekerja Baru</h3>
-                <p class="feature-description">
-                    Report data personal
-                </p>
-            </div>
-            <div class="feature-card-footer">
-                <a href="javascript:void(0)" class="btn feature-btn">Lihat Laporan</a>
             </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
+    <!-- Scripts -->
+    <script src="~/assets/js/codebase.app.min.js"></script>
     <script>
         // Add animation on scroll
         document.addEventListener('DOMContentLoaded', function () {
@@ -299,4 +464,6 @@
             });
         });
     </script>
-}
+</body>
+
+</html>
